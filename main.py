@@ -20,7 +20,7 @@ def report(words_cnt, char_dict):
     for char in char_dict.keys():
         print(f"The '{char}' character was found {char_dict[char]} times")
         pass
-    print("--- End report ---")
+    print("--- End report ----")
     
 
 def main():
