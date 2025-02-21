@@ -15,12 +15,12 @@ def characters_count(value):
     return dictionary
 
 def report(words_cnt, char_dict):
-    print("--- Begin report of books/frankestein.txt ---")
+    print("--- Begin report of books/frankestein.txt --")
     print(f"{words_cnt} words found in the document")
     for char in char_dict.keys():
         print(f"The '{char}' character was found {char_dict[char]} times")
         pass
-    print("--- End report ----")
+    print("--- End report ---")
     
 
 def main():
