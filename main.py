@@ -1,37 +1,27 @@
-def count_words(value):
-    words = value.split()
-    return len(words)
-
-def characters_count(value):
-    dictionary = {}
-    for character in value:
-        char_lower = character.lower()
-        if char_lower in dictionary.keys():
-            value = dictionary[char_lower]
-            value = value + 1
-            dictionary[char_lower] = value
-        else:
-            dictionary[char_lower] = 1
-    return dictionary
-
-def report(words_cnt, char_dict):
-    print("--- Begin report of books/frankestein.txt --")
-    print(f"{words_cnt} words found in the document")
-    for char in char_dict.keys():
-        print(f"The '{char}' character was found {char_dict[char]} times")
-        pass
-    print("--- End report ---")
+from stats import count_words
+from stats import characters_count
+from stats import get_list_of_dictionaries
     
+
+def get_book_text(path_to_file):
+    with open(path_to_file) as f:
+        file_contents = f.read()
+    return file_contents
+
 
 def main():
-    with open("books/frankenstein.txt") as f:
-        file_contents = f.read()
-
-    words_cnt = count_words(file_contents)
-    char_dict = characters_count(file_contents)
+    text = get_book_text("books/frankenstein.txt")
     
-    report(words_cnt, char_dict)
-
+    print("============ BOOKBOT ============")
+    print("Analyzing book found at books/frankenstein.txt...")
+    print("----------- Word Count ----------")
+    num_worlds = count_words(text)
+    print(f"Found {num_worlds} total words")
+    print("--------- Character Count -------")
+    result = get_list_of_dictionaries(characters_count(text))
+    for item in result:
+        print(f'{item["name"]}: {item["num"]}')
+    print("============= END ===============")
 
 main()
 
